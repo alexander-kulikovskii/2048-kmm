@@ -13,7 +13,7 @@ buildscript {
         classpath("com.github.ben-manes:gradle-versions-plugin:${Utils.gradleLibChecker}")
         classpath("dev.icerock.moko:kswift-gradle-plugin:0.5.0")
         classpath("app.cash.paparazzi:paparazzi:${Utils.paparazzi}")
-        classpath("androidx.benchmark:benchmark-gradle-plugin:1.1.0")
+        classpath("androidx.benchmark:benchmark-gradle-plugin:${Utils.benchmarkGradlePlugin}")
     }
 }
 

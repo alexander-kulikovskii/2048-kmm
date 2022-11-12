@@ -55,4 +55,5 @@ object Utils {
     const val detekt = "1.21.0"
     const val paparazzi = "1.1.0"
     const val gradleLibChecker = "0.42.0"
+    const val benchmarkGradlePlugin = "1.1.1"
 }
