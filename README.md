@@ -1,6 +1,12 @@
 # 2048
 KMM version of 2048 game 
 
+## Screenshots
+
+<img src="docs/images/main_screen_android.png" width="200"/>
+
+<img src="docs/images/game_screen_android.png" width="200"/>
+
 ## How to build Android app
 
 To build `debug` version just run such commands:
