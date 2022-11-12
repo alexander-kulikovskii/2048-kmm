@@ -1,0 +1,22 @@
+PODS:
+  - shared (1.0.0)
+  - sharedSwift (1.0):
+    - shared
+
+DEPENDENCIES:
+  - shared (from `../shared`)
+  - sharedSwift (from `../shared`)
+
+EXTERNAL SOURCES:
+  shared:
+    :path: "../shared"
+  sharedSwift:
+    :path: "../shared"
+
+SPEC CHECKSUMS:
+  shared: 093a4971c3c6b929e35fdb52adbc1241012c3895
+  sharedSwift: 8e9ab917af93eabe419e98bd15248cc11bbaf78c
+
+PODFILE CHECKSUM: bdf467dbf4fd2efaab2e8b2d48e6f19a1c33885b
+
+COCOAPODS: 1.11.2
