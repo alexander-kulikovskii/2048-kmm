@@ -88,6 +88,6 @@ val buildGame = workflow(
         uses(CheckoutV3())
         cacheGradleFiles()
         setUpJDK()
-        runGradleTask("Build android app", android.gradle("assembleDebug"))
+        runGradleTask("Build android app", android.gradle("assembleRelease"))
     }
 }.writeToFile()

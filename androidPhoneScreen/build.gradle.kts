@@ -48,21 +48,7 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":androidDesignSystem"))
 
-    implementation("androidx.compose.material3:material3-window-size-class:${Android.materialWindowSize}")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha02")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
-
-    api("androidx.compose.ui:ui:${Android.compose}")
-    api("androidx.compose.ui:ui-tooling:${Android.compose}")
-    api("androidx.compose.foundation:foundation:${Android.compose}")
-    api("androidx.compose.material:material:${Android.compose}")
-    api("androidx.activity:activity-compose:${Android.activityCompose}")
-
-    api("com.google.android.material:material:${Android.composeAndroidMaterial}")
-    api("androidx.compose.material3:material3:${Android.composeMaterial3}")
-    api("androidx.compose.ui:ui-tooling-preview:${Android.compose}")
-    api("com.google.accompanist:accompanist-systemuicontroller:${Android.accompanist}")
+    api("androidx.compose.material3:material3-window-size-class:${Android.materialWindowSize}")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${Utils.detekt}") // TODO add compose rules
 

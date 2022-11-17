@@ -8,9 +8,6 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <profileable
-            android:shell="true"
-            tools:targetApi="32" />
 
         <activity
             android:name=".MainActivity"
@@ -20,5 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="androidx.compose.ui.tooling.PreviewActivity" tools:node="remove"/>
     </application>
 </manifest>

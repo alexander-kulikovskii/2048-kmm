@@ -15,10 +15,15 @@ android {
         targetSdk = Versions.targetSdkVersion
         versionCode = Versions.applicationVersionCode
         versionName = Versions.applicationVersionName
+        resourceConfigurations.addAll(listOf("en", "ru"))
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isDebuggable = true
+
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         create("benchmark") {
             signingConfig = signingConfigs.getByName("debug")
@@ -28,8 +33,6 @@ android {
 //            isMinifyEnabled = true
 //            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "benchmark-rules.pro")
-
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'benchmark-rules.pro'
         }
     }
     buildFeatures {
@@ -50,15 +53,11 @@ dependencies {
     implementation(project(":androidPhoneScreen"))
     implementation(project(":androidDesignSystem"))
     implementation("androidx.compose.material3:material3-window-size-class:${Android.materialWindowSize}")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha02")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha03")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha03")
 
     implementation("com.google.accompanist:accompanist-navigation-animation:0.27.0")
-    implementation("androidx.profileinstaller:profileinstaller:1.3.0-alpha01")
-//    testImplementation( "androidx.profileinstaller:profileinstaller:1.3.0-alpha01")
-//    androidTestImplementation( "androidx.profileinstaller:profileinstaller:1.3.0-alpha01")
-
-//    implementation("androidx.profileinstaller:profileinstaller:1.3.0-alpha01")
+    implementation("androidx.profileinstaller:profileinstaller:1.3.0-alpha02")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${Utils.detekt}")
 }
