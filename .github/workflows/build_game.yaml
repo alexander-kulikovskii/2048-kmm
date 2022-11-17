@@ -201,4 +201,4 @@ jobs:
         distribution: adopt
     - id: step-4
       name: Build android app
-      run: ./gradlew androidApp:assembleDebug
+      run: ./gradlew androidApp:assembleRelease
