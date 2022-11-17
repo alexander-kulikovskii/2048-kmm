@@ -46,12 +46,11 @@ android {
 dependencies {
 
     api("androidx.compose.ui:ui:${Android.compose}")
-    api("androidx.compose.ui:ui-tooling:${Android.compose}")
+    debugApi("androidx.compose.ui:ui-tooling:${Android.compose}")
     api("androidx.compose.foundation:foundation:${Android.compose}")
     api("androidx.compose.material:material:${Android.compose}")
     api("androidx.activity:activity-compose:${Android.activityCompose}")
 
-    api("com.google.android.material:material:${Android.composeAndroidMaterial}")
     api("androidx.compose.material3:material3:${Android.composeMaterial3}")
     api("androidx.compose.ui:ui-tooling-preview:${Android.compose}")
     api("com.google.accompanist:accompanist-systemuicontroller:${Android.accompanist}")

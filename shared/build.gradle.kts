@@ -62,7 +62,10 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Coroutines.core}")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${Coroutines.serialization}")
                 api("com.russhwolf:multiplatform-settings-no-arg:${Dependencies.multiplatformSettings}")
-                implementation("io.insert-koin:koin-core:${Dependencies.koin}")
+                implementation("io.insert-koin:koin-core:${Dependencies.koin}"){
+                    exclude (group= "androidx.appcompat", module="appcompat")
+                    exclude (group= "androidx.appcompat", module="widget")
+                }
             }
         }
         val commonTest by getting {
@@ -86,8 +89,16 @@ kotlin {
                 api("androidx.navigation:navigation-compose:${Android.composeNavigation}")
 
                 api("io.insert-koin:koin-core:${Dependencies.koin}")
-                api("io.insert-koin:koin-android:${Dependencies.koin}")
-                api("io.insert-koin:koin-androidx-compose:${Dependencies.koin}")
+                api("io.insert-koin:koin-android:${Dependencies.koin}"){
+                    exclude (group= "androidx.emoji2", module="emoji2")
+                    exclude (group= "androidx.appcompat", module="widget")
+                    exclude (group= "androidx.emoji2", module="emoji2-views-helper")
+                    exclude (group= "androidx.appcompat", module="appcompat-resources")
+                }
+                api("io.insert-koin:koin-androidx-compose:${Dependencies.koin}"){
+                    exclude (group= "androidx.emoji2", module="emoji2")
+                    exclude (group= "androidx.appcompat", module="widget")
+                }
             }
         }
         val androidTest by getting
