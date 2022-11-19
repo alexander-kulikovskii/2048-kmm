@@ -24,7 +24,7 @@ internal fun cell2048(
     onLevelClick: (id: LevelId) -> Unit = {},
     isPortrait: Boolean = true,
 ) {
-    cell(LevelId.L_2048, enabled, onLevelClick, isPortrait)
+    cell(LevelId.L_2048, enabled, { onLevelClick(LevelId.L_2048) }, isPortrait)
 }
 
 @Composable
@@ -33,7 +33,7 @@ internal fun cell4096(
     onLevelClick: (id: LevelId) -> Unit = {},
     isPortrait: Boolean = true,
 ) {
-    cell(LevelId.L_4096, enabled, onLevelClick, isPortrait)
+    cell(LevelId.L_4096, enabled, { onLevelClick(LevelId.L_4096) }, isPortrait)
 }
 
 @Composable
@@ -42,7 +42,7 @@ internal fun cell8192(
     onLevelClick: (id: LevelId) -> Unit = {},
     isPortrait: Boolean = true,
 ) {
-    cell(LevelId.L_8192, enabled, onLevelClick, isPortrait)
+    cell(LevelId.L_8192, enabled, { onLevelClick(LevelId.L_8192) }, isPortrait)
 }
 
 @Composable
@@ -51,20 +51,20 @@ internal fun cellUnlimited(
     onLevelClick: (id: LevelId) -> Unit = {},
     isPortrait: Boolean = true,
 ) {
-    cell(LevelId.L_UNLIMITED, enabled, onLevelClick, isPortrait)
+    cell(LevelId.L_UNLIMITED, enabled, { onLevelClick(LevelId.L_UNLIMITED) }, isPortrait)
 }
 
 @Composable
 private fun cell(
     levelId: LevelId,
     enabled: Boolean,
-    onLevelClick: (id: LevelId) -> Unit = {},
+    onLevelClick: () -> Unit = {},
     isPortrait: Boolean = true,
 ) {
     val modifier = Modifier
         .padding(if (isPortrait) PortraitItemPadding else LandscapeItemPadding)
         .clickable(enabled = enabled) {
-            onLevelClick(levelId)
+            onLevelClick()
         }
         .width(if (isPortrait) PortraitItemWidth else LandscapeItemWidth)
     when (levelId) {

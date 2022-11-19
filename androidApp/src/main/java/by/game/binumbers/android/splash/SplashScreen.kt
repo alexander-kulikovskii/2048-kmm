@@ -20,15 +20,15 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 internal fun SplashScreen(
     windowWidthSizeClass: WindowWidthSizeClass,
+    onNavigate: (BinumbersNavigation) -> Unit,
     viewModel: SplashViewModel = getViewModel(),
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    navigate: (BinumbersNavigation) -> Unit,
 ) {
     lifecycleOwner.handleLifecycle(viewModel)
 
     val state by viewModel.observeState().collectAsStateWithLifecycle()
     viewModel.observerNavigation { command ->
-        navigate(command)
+        onNavigate(command)
     }
 
     SplashContent(state, windowWidthSizeClass)
@@ -51,10 +51,10 @@ private fun LifecycleOwner.handleLifecycle(viewModel: SplashViewModel) {
 
 // TODO move this function to ksp, add deps for android.shared module
 @Composable
-private fun SplashViewModel.observerNavigation(navigate: (BinumbersNavigation) -> Unit) {
+private fun SplashViewModel.observerNavigation(onNavigate: (BinumbersNavigation) -> Unit) {
     LaunchedEffect(observeNavigation()) {
         observeNavigation().collect { command ->
-            navigate(command)
+            onNavigate(command)
         }
     }
 }

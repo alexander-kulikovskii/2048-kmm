@@ -17,12 +17,12 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 internal fun LevelsScreen(
     windowWidthSizeClass: WindowWidthSizeClass,
+    onNavigate: (BinumbersNavigation) -> Unit,
     viewModel: LevelsViewModel = getViewModel(),
-    navigate: (BinumbersNavigation) -> Unit,
 ) {
     val state by viewModel.observeState().collectAsStateWithLifecycle()
     viewModel.observerNavigation { command ->
-        navigate(command)
+        onNavigate(command)
     }
 
     BackHandler(onBack = { viewModel.dispatch(LevelsAction.OnClickBack) })
@@ -36,10 +36,10 @@ internal fun LevelsScreen(
 
 // TODO move this function to ksp, add deps for android.shared module
 @Composable
-private fun LevelsViewModel.observerNavigation(navigate: (BinumbersNavigation) -> Unit) {
+private fun LevelsViewModel.observerNavigation(onNavigate: (BinumbersNavigation) -> Unit) {
     LaunchedEffect(observeNavigation()) {
         observeNavigation().collect { command ->
-            navigate(command)
+            onNavigate(command)
         }
     }
 }

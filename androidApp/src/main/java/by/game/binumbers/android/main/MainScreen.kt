@@ -16,12 +16,12 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 internal fun MainScreen(
     windowWidthSizeClass: WindowWidthSizeClass,
+    onNavigate: (BinumbersNavigation) -> Unit,
     viewModel: MainViewModel = getViewModel(),
-    navigate: (BinumbersNavigation) -> Unit,
 ) {
     val state by viewModel.observeState().collectAsStateWithLifecycle()
     viewModel.observerNavigation { command ->
-        navigate(command)
+        onNavigate(command)
     }
 
     MainContent(
@@ -35,10 +35,10 @@ internal fun MainScreen(
 
 // TODO move this function to ksp, add deps for android.shared module
 @Composable
-private fun MainViewModel.observerNavigation(navigate: (BinumbersNavigation) -> Unit) {
+private fun MainViewModel.observerNavigation(onNavigate: (BinumbersNavigation) -> Unit) {
     LaunchedEffect(observeNavigation()) {
         observeNavigation().collect { command ->
-            navigate(command)
+            onNavigate(command)
         }
     }
 }

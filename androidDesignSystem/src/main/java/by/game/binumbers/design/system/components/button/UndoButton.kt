@@ -47,7 +47,7 @@ fun UndoButton(
             ),
             contentDescription = "Undo button",
             tint = Color.Unspecified,
-            modifier = modifier
+            modifier = Modifier
                 .padding(GameTheme.dimensions.buttonPadding)
                 .height(GameTheme.dimensions.buttonHeight)
                 .width(GameTheme.dimensions.buttonHeight)

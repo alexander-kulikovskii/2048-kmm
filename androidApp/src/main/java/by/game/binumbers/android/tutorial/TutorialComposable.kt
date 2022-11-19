@@ -13,8 +13,10 @@ internal fun NavGraphBuilder.tutorialComposable(
     router: Router,
 ) {
     composable(Screen.Tutorial.route) {
-        TutorialScreen(windowSizeClass) { command ->
-            router.navigateWithCommand(command)
-        }
+        TutorialScreen(windowSizeClass,
+            onNavigate = { command ->
+                router.navigateWithCommand(command)
+            }
+        )
     }
 }

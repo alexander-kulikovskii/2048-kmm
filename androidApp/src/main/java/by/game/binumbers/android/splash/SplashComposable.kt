@@ -8,10 +8,13 @@ import by.game.binumbers.base.navigation.Screen
 import com.google.accompanist.navigation.animation.composable
 
 @OptIn(ExperimentalAnimationApi::class)
-internal fun NavGraphBuilder.splashComposable(windowSizeClass: WindowWidthSizeClass, router: Router) {
+internal fun NavGraphBuilder.splashComposable(
+    windowSizeClass: WindowWidthSizeClass,
+    router: Router,
+) {
     composable(Screen.Splash.route) {
-        SplashScreen(windowSizeClass) { command ->
+        SplashScreen(windowSizeClass, onNavigate = { command ->
             router.navigateWithCommand(command)
-        }
+        })
     }
 }

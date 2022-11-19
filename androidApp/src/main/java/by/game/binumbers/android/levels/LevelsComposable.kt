@@ -33,8 +33,10 @@ internal fun NavGraphBuilder.levelsComposable(
             }
         }
     ) {
-        LevelsScreen(windowSizeClass) { command ->
-            router.navigateWithCommand(command)
-        }
+        LevelsScreen(windowSizeClass,
+            onNavigate = { command ->
+                router.navigateWithCommand(command)
+            }
+        )
     }
 }

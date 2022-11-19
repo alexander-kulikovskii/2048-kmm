@@ -18,12 +18,12 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 internal fun SettingsScreen(
     windowWidthSizeClass: WindowWidthSizeClass,
+    onNavigate: (BinumbersNavigation) -> Unit,
     viewModel: SettingsViewModel = getViewModel(),
-    navigate: (BinumbersNavigation) -> Unit,
 ) {
     val state by viewModel.observeState().collectAsStateWithLifecycle()
     viewModel.observerNavigation { command ->
-        navigate(command)
+        onNavigate(command)
     }
 
     BackHandler(onBack = { viewModel.dispatch(SettingsAction.OnClickBack) })
@@ -40,10 +40,10 @@ internal fun SettingsScreen(
 
 // TODO move this function to ksp, add deps for android.shared module
 @Composable
-private fun SettingsViewModel.observerNavigation(navigate: (BinumbersNavigation) -> Unit) {
+private fun SettingsViewModel.observerNavigation(onNavigate: (BinumbersNavigation) -> Unit) {
     LaunchedEffect(observeNavigation()) {
         observeNavigation().collect { command ->
-            navigate(command)
+            onNavigate(command)
         }
     }
 }

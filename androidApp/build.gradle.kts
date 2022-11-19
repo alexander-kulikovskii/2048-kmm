@@ -60,6 +60,7 @@ dependencies {
     implementation("androidx.profileinstaller:profileinstaller:1.3.0-alpha02")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${Utils.detekt}")
+    detektPlugins("ru.kode:detekt-rules-compose:${Utils.detektCompose}")
 }
 
 project.apply {

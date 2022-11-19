@@ -17,7 +17,7 @@ import by.game.binumbers.design.system.theme.BinumbersTheme
 import by.game.binumbers.design.system.theme.GameTheme
 
 @Composable
-fun LogoIcon(modifier: Modifier) {
+fun LogoIcon(modifier: Modifier = Modifier) {
     Icon(
         makeLogoFromPath(),
         contentDescription = "Logo icon",

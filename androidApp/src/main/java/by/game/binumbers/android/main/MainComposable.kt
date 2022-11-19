@@ -23,8 +23,10 @@ internal fun NavGraphBuilder.mainComposable(windowSizeClass: WindowWidthSizeClas
             slideOutOfLeft()
         }
     ) {
-        MainScreen(windowSizeClass) { command ->
-            router.navigateWithCommand(command)
-        }
+        MainScreen(windowSizeClass,
+            onNavigate = { command ->
+                router.navigateWithCommand(command)
+            }
+        )
     }
 }

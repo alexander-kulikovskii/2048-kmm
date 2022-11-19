@@ -21,11 +21,11 @@ private const val STROKE = "M84.5,84.5m84.5,-0a84.5,84.5 0,1 1,-169 -0a84.5,84.5
 @Suppress("LongParameterList")
 @Composable
 fun RoundedButton(
-    modifier: Modifier = Modifier,
     symbolPathList: List<String>,
     contentColor: Color,
     backgroundColor: Color,
     borderColor: Color,
+    modifier: Modifier = Modifier,
     contentDescription: String = "Rounded button",
     onClick: () -> Unit = {},
 ) {
