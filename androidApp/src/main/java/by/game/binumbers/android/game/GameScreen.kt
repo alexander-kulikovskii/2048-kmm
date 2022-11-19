@@ -21,15 +21,15 @@ import org.koin.androidx.compose.getViewModel
 internal fun GameScreen(
     windowWidthSizeClass: WindowWidthSizeClass,
     levelIdAsString: String?,
+    onNavigate: (BinumbersNavigation) -> Unit,
     viewModel: GameViewModel = getViewModel(),
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    navigate: (BinumbersNavigation) -> Unit,
 ) {
     lifecycleOwner.handleLifecycle(viewModel)
 
     val state by viewModel.observeState().collectAsStateWithLifecycle()
     viewModel.observerNavigation { command ->
-        navigate(command)
+        onNavigate(command)
     }
     LaunchedEffect(levelIdAsString) {
         viewModel.dispatch(GameAction.StartGame(levelIdAsString!!))
@@ -70,10 +70,10 @@ private fun LifecycleOwner.handleLifecycle(viewModel: GameViewModel) {
 
 // TODO move this function to ksp, add deps for android.shared module
 @Composable
-private fun GameViewModel.observerNavigation(navigate: (BinumbersNavigation) -> Unit) {
+private fun GameViewModel.observerNavigation(onNavigate: (BinumbersNavigation) -> Unit) {
     LaunchedEffect(observeNavigation()) {
         observeNavigation().collect { command ->
-            navigate(command)
+            onNavigate(command)
         }
     }
 }

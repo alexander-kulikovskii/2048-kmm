@@ -33,8 +33,10 @@ internal fun NavGraphBuilder.settingsComposable(
             }
         }
     ) {
-        SettingsScreen(windowSizeClass) { command ->
-            router.navigateWithCommand(command)
-        }
+        SettingsScreen(windowSizeClass,
+            onNavigate = { command ->
+                router.navigateWithCommand(command)
+            }
+        )
     }
 }

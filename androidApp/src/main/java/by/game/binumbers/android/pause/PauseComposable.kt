@@ -15,8 +15,10 @@ internal fun NavGraphBuilder.pauseComposable(
     composable(
         Screen.Pause.route,
     ) {
-        PauseScreen(windowSizeClass) { command ->
-            router.navigateWithCommand(command)
-        }
+        PauseScreen(windowSizeClass,
+            onNavigate = { command ->
+                router.navigateWithCommand(command)
+            }
+        )
     }
 }

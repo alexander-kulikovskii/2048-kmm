@@ -35,9 +35,10 @@ internal fun NavGraphBuilder.gameComposable(
         }
     ) { backStackEntry ->
         GameScreen(windowSizeClass,
-            backStackEntry.getRouteLevelId()
-        ) { command ->
-            router.navigateWithCommand(command)
-        }
+            backStackEntry.getRouteLevelId(),
+            onNavigate = { command ->
+                router.navigateWithCommand(command)
+            }
+        )
     }
 }

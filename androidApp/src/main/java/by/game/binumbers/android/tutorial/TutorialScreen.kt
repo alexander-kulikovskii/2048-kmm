@@ -29,12 +29,12 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 internal fun TutorialScreen(
     windowWidthSizeClass: WindowWidthSizeClass,
+    onNavigate: (BinumbersNavigation) -> Unit,
     viewModel: TutorialViewModel = getViewModel(),
-    navigate: (BinumbersNavigation) -> Unit,
 ) {
     val state by viewModel.observeState().collectAsStateWithLifecycle()
     viewModel.observerNavigation { command ->
-        navigate(command)
+        onNavigate(command)
     }
 
     TutorialContent(
@@ -47,10 +47,10 @@ internal fun TutorialScreen(
 
 // TODO move this function to ksp, add deps for android.shared module
 @Composable
-private fun TutorialViewModel.observerNavigation(navigate: (BinumbersNavigation) -> Unit) {
+private fun TutorialViewModel.observerNavigation(onNavigate: (BinumbersNavigation) -> Unit) {
     LaunchedEffect(observeNavigation()) {
         observeNavigation().collect { command ->
-            navigate(command)
+            onNavigate(command)
         }
     }
 }

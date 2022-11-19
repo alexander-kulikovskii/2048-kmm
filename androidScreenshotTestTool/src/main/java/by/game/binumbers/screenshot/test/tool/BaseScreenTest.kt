@@ -74,7 +74,7 @@ abstract class BaseScreenTest(
         )
         paparazzi.snapshot {
             BinumbersTheme(darkTheme = true, useDynamicColor = false) {
-                data.render(content = content, deviceWrapper = deviceWrapper)
+                data.Render(content = content, deviceWrapper = deviceWrapper)
             }
         }
     }
@@ -94,7 +94,7 @@ abstract class BaseScreenTest(
                     darkTheme = theme.isDark(),
                     useDynamicColor = (dynamicColor == "true")
                 ) {
-                    data.render(content = content, deviceWrapper = deviceWrapper)
+                    data.Render(content = content, deviceWrapper = deviceWrapper)
                 }
             }
         }
@@ -117,13 +117,13 @@ abstract class BaseScreenTest(
         )
         paparazzi.snapshot {
             BinumbersTheme(darkTheme = true, useDynamicColor = false) {
-                data.render(content = content, deviceWrapper = deviceWrapper)
+                data.Render(content = content, deviceWrapper = deviceWrapper)
             }
         }
     }
 
     @Composable
-    private fun StateWrapper.render(
+    private fun StateWrapper.Render(
         content: @Composable (BinumbersState, WindowWidthSizeClass) -> Unit,
         deviceWrapper: DeviceConfigWrapper,
     ) {

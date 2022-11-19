@@ -6,10 +6,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 
 @Composable
-internal fun Lifecycle.observeAsState(eventHandler: (Lifecycle.Event) -> Unit) {
+internal fun Lifecycle.observeAsState(onEvent: (Lifecycle.Event) -> Unit) {
     DisposableEffect(this) {
         val observer = LifecycleEventObserver { _, event ->
-            eventHandler(event)
+            onEvent(event)
         }
         this@observeAsState.addObserver(observer)
         onDispose {
