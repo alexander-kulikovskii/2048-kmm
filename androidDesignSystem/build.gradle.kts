@@ -56,6 +56,7 @@ dependencies {
     api("com.google.accompanist:accompanist-systemuicontroller:${Android.accompanist}")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${Utils.detekt}") // TODO add compose rules
+    detektPlugins("ru.kode:detekt-rules-compose:${Utils.detektCompose}")
 
     testImplementation("com.google.testparameterinjector:test-parameter-injector:${Testing.parameterInjector}")
     testImplementation(project(":androidScreenshotTestTool"))

@@ -51,6 +51,7 @@ dependencies {
     api("androidx.compose.material3:material3-window-size-class:${Android.materialWindowSize}")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${Utils.detekt}") // TODO add compose rules
+    detektPlugins("ru.kode:detekt-rules-compose:${Utils.detektCompose}")
 
     testImplementation("com.google.testparameterinjector:test-parameter-injector:${Testing.parameterInjector}")
     testImplementation("com.google.truth:truth:1.1.3")
