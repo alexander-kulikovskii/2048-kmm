@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -50,16 +51,18 @@ class MainActivity : ComponentActivity() {
                 Box(modifier = Modifier.background(GameTheme.colors.background)) {
 
                     val navController = rememberAnimatedNavController()
-                    val router = RouterImpl(
-                        blockNavigation = { from, to, inclusiveScreen ->
-                            navController.navigateTo(from, to, inclusiveScreen)
-                        },
-                        blockPopUp = { _, _, count ->
-                            for (i in 0 until count) {
-                                navController.popBackStack()
+                    val router = remember(settingsViewModel) {
+                        RouterImpl(
+                            blockNavigation = { from, to, inclusiveScreen ->
+                                navController.navigateTo(from, to, inclusiveScreen)
+                            },
+                            blockPopUp = { _, _, count ->
+                                for (i in 0 until count) {
+                                    navController.popBackStack()
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
 
                     AnimatedNavHost(navController = navController, startDestination = Screen.Splash.route) {
                         splashComposable(windowSizeClass, router)
