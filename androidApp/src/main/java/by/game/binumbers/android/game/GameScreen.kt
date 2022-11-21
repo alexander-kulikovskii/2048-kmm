@@ -36,13 +36,13 @@ internal fun GameScreen(
     LaunchedEffect(levelIdAsString) {
         viewModel.dispatch(GameAction.StartGame(levelIdAsString!!))
     }
-    val onBackClick = remember(viewModel) {{ viewModel.dispatch(GameAction.OnClickBack) }}
-    val onMoveLeft = remember(viewModel) {{ viewModel.dispatch(GameAction.OnMoveLeft) }}
-    val onMoveDown = remember(viewModel) {{ viewModel.dispatch(GameAction.OnMoveDown) }}
-    val onMoveRight = remember(viewModel) {{ viewModel.dispatch(GameAction.OnMoveRight) }}
-    val onMoveUp = remember(viewModel) {{ viewModel.dispatch(GameAction.OnMoveUp) }}
-    val onUndoClick = remember(viewModel) {{ viewModel.dispatch(GameAction.OnUndoClick) }}
-    val onPauseClick = remember(viewModel) {{ viewModel.dispatch(GameAction.OnPauseClick) }}
+    val onBackClick = remember(viewModel) { { viewModel.dispatch(GameAction.OnClickBack) } }
+    val onMoveLeft = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveLeft) } }
+    val onMoveDown = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveDown) } }
+    val onMoveRight = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveRight) } }
+    val onMoveUp = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveUp) } }
+    val onUndoClick = remember(viewModel) { { viewModel.dispatch(GameAction.OnUndoClick) } }
+    val onPauseClick = remember(viewModel) { { viewModel.dispatch(GameAction.OnPauseClick) } }
     GameContent(
         state, windowWidthSizeClass,
         onBackClick = onBackClick,
