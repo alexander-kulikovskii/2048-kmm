@@ -4,6 +4,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -28,21 +29,29 @@ internal fun GameScreen(
     lifecycleOwner.handleLifecycle(viewModel)
 
     val state by viewModel.observeState().collectAsStateWithLifecycle()
+    val tmp = state.score.toString().length.toLong()
     viewModel.observerNavigation { command ->
         onNavigate(command)
     }
     LaunchedEffect(levelIdAsString) {
         viewModel.dispatch(GameAction.StartGame(levelIdAsString!!))
     }
+    val onBackClick = remember(viewModel) { { viewModel.dispatch(GameAction.OnClickBack) } }
+    val onMoveLeft = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveLeft) } }
+    val onMoveDown = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveDown) } }
+    val onMoveRight = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveRight) } }
+    val onMoveUp = remember(viewModel) { { viewModel.dispatch(GameAction.OnMoveUp) } }
+    val onUndoClick = remember(viewModel) { { viewModel.dispatch(GameAction.OnUndoClick) } }
+    val onPauseClick = remember(viewModel) { { viewModel.dispatch(GameAction.OnPauseClick) } }
     GameContent(
         state, windowWidthSizeClass,
-        onBackClick = { viewModel.dispatch(GameAction.OnClickBack) },
-        onMoveLeft = { viewModel.dispatch(GameAction.OnMoveLeft) },
-        onMoveDown = { viewModel.dispatch(GameAction.OnMoveDown) },
-        onMoveRight = { viewModel.dispatch(GameAction.OnMoveRight) },
-        onMoveUp = { viewModel.dispatch(GameAction.OnMoveUp) },
-        onUndoClick = { viewModel.dispatch(GameAction.OnUndoClick) },
-        onPauseClick = { viewModel.dispatch(GameAction.OnPauseClick) },
+        onBackClick = onBackClick,
+        onMoveLeft = onMoveLeft,
+        onMoveDown = onMoveDown,
+        onMoveRight = onMoveRight,
+        onMoveUp = onMoveUp,
+        onUndoClick = onUndoClick,
+        onPauseClick = onPauseClick,
     )
 }
 
